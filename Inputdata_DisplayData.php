@@ -14,7 +14,7 @@ header, nav, main, footer
 }
 
 	h2 {
-		background-color: #4CAF50;
+		background-color: rgb(178, 27, 0);
 		color: white;
 		text-align: center;
 		padding: 8px;

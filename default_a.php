@@ -91,10 +91,10 @@ header, nav, main, footer
 <form method="POST" action="Inputdata_DisplayData_a.php">  
 <?php
 
-$cntr = 0;
+$_SESSION['cntr'] = 0;
                     while($row = $result->fetch())
                     { 
-						$cntr++;
+						$_SESSION['cntr'] = $_SESSION['cntr'] + 1;
 echo('
 <table border="none">
     <thead>
@@ -108,7 +108,7 @@ echo('
 
         <tr>
 			<th>Select</th>
-			<td><select id="Response" name="Response'.$cntr.'" required> 
+			<td><select id="Response" name="Response'.$_SESSION['cntr'].'" required> 
 			
                 <option value="">Select</option>.
 				<option value="'.$row ['qResponse1'].'">'.
@@ -122,14 +122,14 @@ echo('
 		</td>
 		</tr>
 		<tr>
-			<td><input type="hidden" id="QuestionNumber" name="QuestionNumber'.$cntr.'" 
+			<td><input type="hidden" id="QuestionNumber" name="QuestionNumber'.$_SESSION['cntr'].'" 
 										value="'.$row ['qQuestionNumber'].'">
 			</td>					
 		</tr>
 		<tr>
 			</td>
 			<th>Comment</th>
-			<td><input type="text" width="250" name="Comment'.$cntr.'"">
+			<td><input type="text" width="250" name="Comment'.$_SESSION['cntr'].'"">
 			</td>
 		</tr>
 
