@@ -24,6 +24,7 @@ $result = $pdo->query($sql_question);
 
 <html>
 <head>
+
 <title>Poll</title>
 <style>
 	 
@@ -53,10 +54,6 @@ header, nav, main, footer
 		padding: 3px;
 		width: 250px;
 	}
-//	th {
-//		background-color: rgb(255, 99, 71);
-//		color: white;
-//	}
 	input {
 		width: 800px;
 	}

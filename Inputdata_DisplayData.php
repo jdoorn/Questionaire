@@ -1,33 +1,5 @@
 <!-- Inputdata_DisplayData.php -->
-<style>
 
-/* body element */
-	body {
-	background-color : #FFFFFF;
-	color : #666666;
-	font-family : Verdana, Arial, sans-serif;
-	font-size: 100%;
-}
-header, nav, main, footer
-{
-	display: block;
-}
-
-	h2 {
-		background-color: rgb(178, 27, 0);
-		color: white;
-		text-align: center;
-		padding: 8px;
-	}
-/* nav element  */
-	nav {
-	font-weight : bold;
-	padding: 20px 5px 0px 20px;
-	text-decoration: none;
-	float: left;
-	background-size : 10%;
-}
-</style> 
 <?php
 
 require 'dbconnect.php';
@@ -107,6 +79,9 @@ catch(PDOException $e)
 
 <html>
 <head>
+<!-- CSS Stylesheet -->	
+<link rel="stylesheet" href="styles.css">
+
     <title>Confirmation</title>
 </head>
 <body>

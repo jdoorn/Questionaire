@@ -51,50 +51,11 @@ $result_edit = $pdo->query($sql_selectEdit);
 ?>
 <html>
 <head>
+<!-- CSS Stylesheet -->	
+<link rel="stylesheet" href="styles.css">
+
 <title>Display Data</title>
-<style>
-	 
 
-/* body element - sets background to tan, text to black */
-	body {
-	background-color : #FFFFFF;
-	color : #666666;
-	font-family : Verdana, Arial, sans-serif;
-	font-size: 100%;
-	background-image: url(images/sand.jpg);
-	background-size: repeat;
-	color: rgb(64,48,40);
-/*	background-repeat: repeat; */
-}
-header, nav, main, footer
-{
-	display: block;
-}
-	td {
-		text-align: left;
-		padding: 4px;
-	}
-	th {
-		background-color: rgb(255, 99, 71);
-		color: white;
-        text-align: center;
-        padding: 4px;
-	}
-
-	h1 {
-		background-color: rgb(178, 27, 0);
-		color: white;
-		text-align: center;
-		padding: 8px;
-	}
-/* nav element  */
-	nav {
-	font-weight : bold;
-	padding: 20px 5px 0px 20px;
-	text-decoration: none;
-	float: left;
-}
-</style>  
 </head>
 <body>
     <table border="2">

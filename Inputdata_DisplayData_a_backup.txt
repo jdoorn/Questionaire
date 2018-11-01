@@ -66,6 +66,9 @@ $sqlh_input->execute();
 
 <html>
 <head>
+<!-- CSS Stylesheet -->	
+<link rel="stylesheet" href="styles.css">
+
     <title>Confirmation</title>
 </head>
 <body>
