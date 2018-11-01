@@ -27,18 +27,6 @@ CREATE TABLE `tbl_poll_a` (
   `aResponse_Id` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tbl_poll_a`
---
-
-INSERT INTO `tbl_poll_a` (`aQuestionNumber`, `aResponse`, `aComment`, `aResponse_Id`) VALUES
-(11, 'Canada', 'I don\'t know', 9),
-(11, 'Mexico', 'Cabo San Lucas', 10),
-(11, 'Fiji', 'Turtle Island is our favorite', 11),
-(11, 'Australia', 'Goondawindi', 12),
-(11, 'Fiji', 'Octopus Island', 13),
-(12, 'Bird', '', 14);
-
 -- --------------------------------------------------------
 
 --
@@ -63,7 +51,7 @@ CREATE TABLE `tbl_poll_q` (
 INSERT INTO `tbl_poll_q` (`qQuestionNumber`, `qQuestion`, `qResponse1`, `qResponse2`, `qResponse3`, `qResponse4`, `qIncludeComment`, `qQuestion_Id`) VALUES
 (11, 'What is your favorite country to visit?', 'Canada', 'Mexico', 'Fiji', 'Australia', NULL, 7),
 (5, 'What is your Favorite town in Flathead Valley?', 'Kalispell', 'Whitefish', 'Bigfork', 'Columbia Falls', NULL, 9),
-(6, 'What is your Favorite restaurant in Whitefish?', 'Tupelo&#39;s', 'Mambos', 'Wasabi', 'Whitefish Lake Golf Restaurant', NULL, 11),
+(6, 'What is your Favorite restaurant in Whitefish?', 'Tupelos', 'Mambos', 'Wasabi', 'Whitefish Lake Golf Restaurant', NULL, 11),
 (12, 'What is your favorite pet?', 'Dog', 'Cat', 'Bird', 'Rodent', NULL, 13),
 (1, 'Ethnicity', 'Caucasian', 'African American', 'Hispanic', 'Native American', NULL, 14),
 (2, 'Household Income Level', 'less than $50,000', '$50,000 - $100,000', '$100,000 - $200,000', 'greater than $200,000', NULL, 16),
