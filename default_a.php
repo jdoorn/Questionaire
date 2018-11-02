@@ -98,7 +98,7 @@ echo('
         <tr>
             <th colspan="2">
 			<option value="'.$row ['qQuestionNumber'].". ".$row ['qQuestion'].'">'.
-							 $row ['qQuestionNumber'].". ".$row ['qQuestion'].'</option>
+							 $row ['qQuestionNumber'].". ".$row ['qQuestion'].'</option> 
 			</th>
         </tr>
     </thead>

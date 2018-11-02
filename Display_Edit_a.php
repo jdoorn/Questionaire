@@ -1,8 +1,23 @@
-<!-- Display_Edit_a.php
+ <!-- Display_Edit_a.php
 
 <?php
 require 'dbconnect.php';
 
+// Build sql  - Table 1
+$sql_selectEdit1 = "SELECT aQuestionNumber, qQuestion, 
+	qResponse1, (Select count(aResponse) from tbl_poll_a where aResponse = qResponse1) as 'Response1Count',
+    qResponse2, (Select count(aResponse) from tbl_poll_a where aResponse = qResponse2) as 'Response2Count',
+    qResponse3, (Select count(aResponse) from tbl_poll_a where aResponse = qResponse3) as 'Response3Count',
+    qResponse4, (Select count(aResponse) from tbl_poll_a where aResponse = qResponse4) as 'Response4Count'
+FROM tbl_poll_a 
+Inner Join tbl_poll_q  on aQuestionNumber = qQuestionNumber
+Group By aQuestionNumber
+ORDER BY aQuestionNumber";
+
+//run the query                  
+$result_edit1 = $pdo->query($sql_selectEdit1);
+
+// Build sql  - Table 2
 $sql_selectEdit = "SELECT aQuestionNumber, qQuestion, count(aResponse) as 'ResponseCount', aResponse
 FROM tbl_poll_a 
 Inner Join tbl_poll_q  on aQuestionNumber = qQuestionNumber
@@ -12,12 +27,12 @@ ORDER BY aQuestionNumber, count(aResponse) desc, aResponse_Id";
 //run the query                  
 $result_edit = $pdo->query($sql_selectEdit);
 
+// Build sql  - Table 3
 $sql_selectEdit2 = "SELECT aQuestionNumber, qQuestion, aResponse, aComment
 FROM tbl_poll_a 
 Inner Join tbl_poll_q  on aQuestionNumber = qQuestionNumber
 WHERE aComment != ''
-Group By aResponse
-ORDER BY aQuestionNumber, aResponse_Id";
+ORDER BY aQuestionNumber, aResponse, aComment";
 
 //run the query                  
 $result_edit2 = $pdo->query($sql_selectEdit2);
@@ -32,32 +47,46 @@ $result_edit2 = $pdo->query($sql_selectEdit2);
 
 </head>
 <body>
-	<h1>Responses by Question</h1>
-    <table border="2" width="100%">
+
+	<h1>Response Count by Question</h1>
+    <table border="none" width="100%">
     <thead>
             <tr>
-                 <th>Question</th>
-                 <th>Response</th>
-				 <th>Response Count</th>
+                 <th width="34%">Question</th>
+                 <th width="14%">Response1</th>
+				 <th width="3%">Count</th>
+                 <th width="14%">Response2</th>
+				 <th width="3%">Count</th>
+                 <th width="14%">Response3</th>
+				 <th width="3%">Count</th>
+                 <th width="14%">Response4</th>
+				 <th width="3%">Count</th>
             </tr>
     </thead>
     <tbody>
     <?php
         // write rows and add buttons
-        while($row = $result_edit->fetch())
+        while($row = $result_edit1->fetch())
         {
         echo(
             '<tr>'.
                  '<td>'.$row['aQuestionNumber'].'. '.$row['qQuestion'].'</td>'.
-				 '<td>'.$row['aResponse'].'</td>'.
-				 '<td style="text-align:center">'.$row['ResponseCount'].'</td>'.
+                 '<td>'.$row['qResponse1'].'</td>'.
+                 '<td style="text-align:center">'.$row['Response1Count'].'</td>'.
+                 '<td>'.$row['qResponse2'].'</td>'.
+                 '<td style="text-align:center">'.$row['Response2Count'].'</td>'.
+                 '<td>'.$row['qResponse3'].'</td>'.
+                 '<td style="text-align:center">'.$row['Response3Count'].'</td>'.
+                 '<td>'.$row['qResponse4'].'</td>'.
+                 '<td style="text-align:center">'.$row['Response4Count'].'</td>'.
             '</tr>'
             );
         }
     ?>
     </tbody>
     </table>
-		<h1>Comments by Question</h1>
+
+<h1>Comments by Question</h1>
 	    <table border="2" width="100%">
     <thead>
             <tr>
