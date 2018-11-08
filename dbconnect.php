@@ -96,7 +96,7 @@ COMMIT;
 try
 {
 
-    $pdo = new PDO('mysql:host=127.0.0.1;dbname=wp_poll1','root','');
+    $pdo = new PDO('mysql:host=127.0.0.1;dbname=wp_poll1','PollSite','');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // only for educational purposes
