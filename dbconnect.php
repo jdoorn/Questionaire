@@ -109,6 +109,7 @@ catch(PDOException $e)
                     $e->getMessage();
     $die();	
 } 
+echo($dbstatus);
 SESSION_START();
 
 
