@@ -104,7 +104,8 @@ $row = $result->fetch();
 //    echo("Response: $_POST[$Response]<br>");
 //    echo("Comment: $_POST[$Comment]<br><br>");
 			
-        echo("<b>$_POST[$QuestionNumber]".". ".$row['qQuestion']."</b><br>");
+//		echo("<b>$_POST[$QuestionNumber]".". ".$row['qQuestion']."</b><br>");
+		echo("<b>".$row['qQuestion']."</b><br>");
         echo("<blockquote> $_POST[$Response]<br>");
         echo("$_POST[$Comment]</blockquote>");
 }

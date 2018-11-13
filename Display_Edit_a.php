@@ -19,7 +19,7 @@ $result_edit1 = $pdo->query($sql_selectEdit1);
 
 // Build sql  - Table 1.1 - Percents
 $sql_selectEdit1_1 = "SELECT aQuestionNumber, qQuestion, 
-(Select count(*) from tbl_poll_a where aQuestionNumber = qQuestionNumber) as 'TotalCount',
+--(Select count(*) from tbl_poll_a where aQuestionNumber = qQuestionNumber) as 'TotalCount',
 -- 1st Response 
 	  qResponse1,
 	 (Select count(*) from tbl_poll_a where aResponse = qResponse1) as 'R_1_Count',
@@ -121,7 +121,8 @@ $result_edit2 = $pdo->query($sql_selectEdit2);
         {
         echo(
             '<tr>'.
-                 '<td>'.$row['aQuestionNumber'].'. '.$row['qQuestion'].'</td>'.
+                 '<td>'.$row['qQuestion'].'</td>'.
+             //    '<td>'.$row['aQuestionNumber'].'. '.$row['qQuestion'].'</td>'.
                  '<td>'.$row['qResponse1'].'</td>'.
                  '<td style="text-align:center">'.$row['Response1Count'].'</td>'.
                  '<td>'.$row['qResponse2'].'</td>'.
@@ -159,7 +160,8 @@ $result_edit2 = $pdo->query($sql_selectEdit2);
         {
         echo(
             '<tr>'.
-                 '<td>'.$row['aQuestionNumber'].'. '.$row['qQuestion'].'</td>'.
+                 '<td>'.$row['qQuestion'].'</td>'.
+            //     '<td>'.$row['aQuestionNumber'].'. '.$row['qQuestion'].'</td>'.
                  '<td>'.$row['qResponse1'].'</td>'.
                  '<td style="text-align:center">'.$row['R_1_Pct'].'</td>'.
                  '<td>'.$row['qResponse2'].'</td>'.
