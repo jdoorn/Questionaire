@@ -25,6 +25,19 @@ if(isset($_POST))
             
             //execute the query			
 			$sqlh_delete->execute();
+			
+        
+            //sql string
+     //       $sql_delete2 = "DELETE FROM tbl_poll_a WHERE aQuestion_Id = :questionID";
+            
+            //prepare the string
+	//		$sqlh_delete2 =  $pdo->prepare($sql_delete2);
+            
+            //bind our parameters
+	//		$sqlh_delete2->bindparam(":questionID",$questionID);
+            
+            //execute the query			
+	//		$sqlh_delete2->execute();
         }
         
         // Check if Edit button was pressed
@@ -76,7 +89,8 @@ $result_edit = $pdo->query($sql_selectEdit);
         {
         echo(
             '<tr>'.
-                 '<td>'.$row['qQuestionNumber'].". ".$row['qQuestion'].'</td>'.
+             //    '<td>'.$row['qQuestionNumber'].". ".$row['qQuestion'].'</td>'.
+				 '<td>'.$row['qQuestion'].'</td>'.
                  '<td>'.$row['qResponse1'].'</td>'.
                  '<td>'.$row['qResponse2'].'</td>'.
                  '<td>'.$row['qResponse3'].'</td>'.

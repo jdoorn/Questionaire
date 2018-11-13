@@ -6,20 +6,14 @@
 				 and provides navigation-->
 
 <?php  
-
 // require is all or nothing
 // include will still try to run the page
 require 'dbconnect.php';
 //echo($dbstatus);
-
 //Select Questions
-
 $sql_question = "SELECT * FROM tbl_poll_q ORDER BY qQuestionNumber";
-
 //Execute the state/query
 $result = $pdo->query($sql_question);
-
-
 ?>
 
 <html>
@@ -28,7 +22,6 @@ $result = $pdo->query($sql_question);
 <title>Poll</title>
 <style>
 	 
-
 /* body element - sets background to tan, text to black */
 	body {
 	background-color : #FFFFFF;
@@ -79,15 +72,11 @@ header, nav, main, footer
 </head>
 </style>  
 <body>
-
 <header>
 	<h1>Emerging Web Technology Final Project</h1>
-
 </header>
-
 <form method="POST" action="Inputdata_DisplayData_a.php">  
 <?php
-
 $_SESSION['cntr'] = 0;
                     while($row = $result->fetch())
                     { 
@@ -102,7 +91,6 @@ echo('
 			</th>
         </tr>
     </thead>
-
         <tr>
 			<th>Select</th>
 			<td><select id="Response" name="Response'.$_SESSION['cntr'].'" required> 
@@ -129,9 +117,7 @@ echo('
 			<td><input type="text" width="250" name="Comment'.$_SESSION['cntr'].'"">
 			</td>
 		</tr>
-
 		</table>
-
 	');
 	}
 ?>
@@ -145,7 +131,6 @@ echo('
 </form> 	
 <?php
     include 'menu.php';
-
 ?>
 </body>
 </html>

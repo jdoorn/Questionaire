@@ -1,8 +1,6 @@
- <!-- Display_Edit_a.php
-
+<!-- Display_Edit_a.php
 <?php
 require 'dbconnect.php';
-
 // Build sql  - Table 1
 $sql_selectEdit1 = "SELECT aQuestionNumber, qQuestion, 
 	qResponse1, (Select count(aResponse) from tbl_poll_a where aResponse = qResponse1) as 'Response1Count',
@@ -13,10 +11,8 @@ FROM tbl_poll_a
 Inner Join tbl_poll_q  on aQuestionNumber = qQuestionNumber
 Group By aQuestionNumber
 ORDER BY aQuestionNumber";
-
 //run the query                  
 $result_edit1 = $pdo->query($sql_selectEdit1);
-
 // Build sql  - Table 1.1 - Percents
 $sql_selectEdit1_1 = "SELECT aQuestionNumber, qQuestion, 
 --(Select count(*) from tbl_poll_a where aQuestionNumber = qQuestionNumber) as 'TotalCount',
@@ -64,30 +60,24 @@ FROM tbl_poll_a
 Inner Join tbl_poll_q  on aQuestionNumber = qQuestionNumber
 Group By aQuestionNumber
 ORDER BY aQuestionNumber";
-
 //run the query                  
 $result_edit1_1 = $pdo->query($sql_selectEdit1_1);
-
 // Build sql  - Table 2
 $sql_selectEdit = "SELECT aQuestionNumber, qQuestion, count(aResponse) as 'ResponseCount', aResponse
 FROM tbl_poll_a 
 Inner Join tbl_poll_q  on aQuestionNumber = qQuestionNumber
 Group By aResponse
 ORDER BY aQuestionNumber, count(aResponse) desc, aResponse_Id";
-
 //run the query                  
 $result_edit = $pdo->query($sql_selectEdit);
-
 // Build sql  - Table 3
 $sql_selectEdit2 = "SELECT aQuestionNumber, qQuestion, aResponse, aComment
 FROM tbl_poll_a 
 Inner Join tbl_poll_q  on aQuestionNumber = qQuestionNumber
 WHERE aComment != ''
 ORDER BY aQuestionNumber, aResponse, aComment";
-
 //run the query                  
 $result_edit2 = $pdo->query($sql_selectEdit2);
-
 ?>
 <html>
 <head>
