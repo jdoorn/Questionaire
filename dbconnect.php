@@ -107,7 +107,7 @@ catch(PDOException $e)
 {
     $dbstatus = 'Database connection failed<br>'.
                     $e->getMessage();
-    $die();	
+    die();	
 } 
 SESSION_START();
 

@@ -1,0 +1,111 @@
+<!-- Inputdata_DisplayData_a.php -->
+<?php
+
+require 'dbconnect.php';
+//echo('<br><br>The value of $POST: <br><br>');
+//print_r($_POST);
+
+for($c = 0; $c < $_SESSION['cntr']; $c++)
+
+{
+	$Response = "Response".($c+1);
+	$QuestionNumber = "QuestionNumber".($c+1);
+	$Comment = "Comment".($c+1);
+	
+	$sql_input = "INSERT INTO tbl_poll_a ".
+            "(aQuestionNumber, ".
+            "aResponse, ".
+            "aComment) ".
+            "VALUES ('".
+            $_POST[$QuestionNumber]."', '".
+            $_POST[$Response]."', '".
+            $_POST[$Comment]."')";
+			
+//prepare the sql statement - $sqlh_input is defined as an object here
+$sqlh_input = $pdo->prepare($sql_input);
+
+//sanitize data
+//$QuestionNumber = filter_var($_POST[$QuestionNumber], FILTER_SANITIZE_STRING);
+//$Response = filter_var($_POST[$Response], FILTER_SANITIZE_STRING);          
+//$Comment = filter_var($_POST[$Comment], FILTER_SANITIZE_STRING);
+
+// execute query
+$sqlh_input->execute();
+}
+
+
+/*
+
+$sql_input = "INSERT INTO tbl_poll_a ".
+            "(aQuestionNumber, ".
+            "aResponse, ".
+            "aComment) ".
+            "VALUES (".
+            ":QuestionNumber, ".
+            ":Response, ".
+            ":Comment)";
+            
+//prepare the sql statement - $sqlh_input is defined as an object here
+$sqlh_input = $pdo->prepare($sql_input);
+
+//sanitize data
+$QuestionNumber = filter_var($_POST[0], FILTER_SANITIZE_STRING);
+$Response = filter_var($_POST['Response'], FILTER_SANITIZE_STRING);          
+$Comment = filter_var($_POST['Comment'], FILTER_SANITIZE_STRING);
+
+//bind our data
+$sqlh_input->bindparam(":QuestionNumber",$QuestionNumber);
+$sqlh_input->bindparam(":Response","response test");
+$sqlh_input->bindparam(":Comment","comment test");
+
+
+// execute query
+$sqlh_input->execute();
+*/
+?>
+
+<html>
+<head>
+<!-- CSS Stylesheet -->	
+<link rel="stylesheet" href="styles.css">
+
+    <title>Confirmation</title>
+</head>
+<body>
+      <h2>Information entered successfully</h2>
+     <?php
+	 
+	 for($c = 0; $c < $_SESSION['cntr']; $c++)
+
+{
+	$Response = "Response".($c+1);
+	$QuestionNumber = "QuestionNumber".($c+1);
+	$Comment = "Comment".($c+1);
+
+// Build sql Select	
+$sql_select = "SELECT qQuestion from tbl_poll_q 
+	WHERE qQuestionNumber = $_POST[$QuestionNumber]";
+
+//echo($sql_select);	
+
+
+//prepare the sql statement - $sqlh_select is defined as an object here
+//$sqlh_select = $pdo->prepare($sql_select);
+
+// execute query
+
+$result = $pdo->query($sql_select);
+$row = $result->fetch();
+
+
+
+			
+        echo("Question: $_POST[$QuestionNumber]".". ".$row['qQuestion']."<br>");
+        echo("Response: $_POST[$Response]<br>");
+        echo("Comment: $_POST[$Comment]<br><br>");
+}
+        include 'menu.php';
+                                          
+      ?>
+</body>
+</html>
