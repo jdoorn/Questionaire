@@ -65,14 +65,18 @@ if(!empty($_POST['qQuestion_Id']))
 ?>
 <html>
 <head>
-      <title>Edit Data</title>
+<title>Questionnaire</title>
 </head>
 <body>
+<div id="wrapper">
+<header>
+	<h2>Edit Data</h2>
+</header>
 <?php
     include 'menu.php';
 ?>
 
-<h2>Edit Data</h2>
+<main>
 <form method="POST" action="Edit_Data.php" 
         onsubmit="return confirm('Are you sure?')">
         
@@ -133,6 +137,7 @@ if(!empty($_POST['qQuestion_Id']))
     </tr>
 </table>
 </form>
-
+</main>
+</div>
 </body>
 </html>

@@ -84,13 +84,22 @@ $result_edit2 = $pdo->query($sql_selectEdit2);
 <!-- CSS Stylesheet -->	
 <link rel="stylesheet" href="styles.css">
 
-<title>Display Data</title>
+<title>Questionnaire</title>
 
 </head>
 <body>
+<div id="wrapper">
+<header>
+	<h1>Questionnaire</h1>
+</header>
 
-	<h1>Response Count by Question</h1>
-    <table border="none" width="100%">
+<?php
+  include 'menu.php';
+?>
+
+<main>
+	<h2>Response Count by Question</h2>
+    <table border="2" width="99%">
     <thead>
             <tr>
                  <th width="34%">Question</th>
@@ -128,8 +137,8 @@ $result_edit2 = $pdo->query($sql_selectEdit2);
     </tbody>
     </table>
 
-	<h1>Response Percent by Question</h1>
-    <table border="none" width="100%">
+	<h2>Response Percent by Question</h2>
+    <table border="2" width="100%">
     <thead>
             <tr>
                  <th width="34%">Question</th>
@@ -167,7 +176,7 @@ $result_edit2 = $pdo->query($sql_selectEdit2);
     </tbody>
     </table>
 
-<h1>Comments by Question</h1>
+<h2>Comments by Question</h2>
 	    <table border="2" width="100%">
     <thead>
             <tr>
@@ -192,8 +201,8 @@ $result_edit2 = $pdo->query($sql_selectEdit2);
     ?>
     </tbody>
     </table>
-<?php
-  include 'menu.php';
-?>
+
+</main>
+</div>
 </body>
 </html>

@@ -29,50 +29,36 @@ $_SESSION['keepr4'] = "";
 
 <html>
 <head>
-<title>Questionaire</title>
+<!-- CSS Stylesheet -->	
+<link rel="stylesheet" href="styles.css">
+<title>Questionnaire</title>
+
 <style>
 
-/* body element */
-	body {
-	background-color : #FFFFFF;
-	color : #666666;
-	font-family : Verdana, Arial, sans-serif;
-	font-size: 100%;
-}
-header, nav, main, footer
-{
-	display: block;
-}
 	td {
 		text-align: left;
 		padding: 8px;
 	}
 	th {
-		background-color: rgb(255, 99, 71);
+		background-color: rgb(180, 194, 221);
 		color: white;
         text-align: center;
 		padding: 8px;
 	}
 
-	h1 {
-		background-color: rgb(178, 27, 0);
-		color: white;
-		text-align: center;
-		padding: 8px;
-	}
-/* nav element  */
-	nav {
-	font-weight : bold;
-	padding: 20px 5px 0px 20px;
-	text-decoration: none;
-	float: left;
-}
 </style>  
 <body>
-
+<div id="wrapper">
 <header>
 	<h1>Questionnaire</h1>
 </header>
+
+<?php
+  include 'menu.php';
+?>
+
+<main>
+
 <form method="POST" action="Inputdata_DisplayData.php">
 <table border="2">
     <thead>
@@ -125,9 +111,8 @@ header, nav, main, footer
 
         </table>
         </form>
-        <?php
-            include 'menu.php';
-        ?>
-        </body>
-        </html>
+</main>
+</div>
+</body>
+</html>
         

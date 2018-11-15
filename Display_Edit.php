@@ -11,33 +11,38 @@ if(isset($_POST))
         if($_POST['action']==='Delete')
         {
         
+            // first delete the answers to the question that is being removed
+            //sql string
+            $sql_delete1 = "DELETE FROM tbl_poll_a 
+                            WHERE aQuestionNumber IN 
+                                (SELECT qQuestionNumber FROM tbl_poll_q WHERE qQuestion_Id = :questionID)";
+            
+            //prepare the string
+			$sqlh_delete1 =  $pdo->prepare($sql_delete1);
+            
+            //sanitize input
+            $questionID = filter_var($_POST['qQuestion_Id'],FILTER_SANITIZE_STRING);
+            
+            //bind our parameters
+			$sqlh_delete1->bindparam(":questionID",$questionID);
+            
+            //execute the query			
+            $sqlh_delete1->execute();
+            
+
+
+            // second delete the question
             //sql string
             $sql_delete = "DELETE FROM tbl_poll_q WHERE qQuestion_Id = :questionID";
             
             //prepare the string
 			$sqlh_delete =  $pdo->prepare($sql_delete);
             
-            //sanitize input
-            $questionID = filter_var($_POST['qQuestion_Id'],FILTER_SANITIZE_STRING);
-            
             //bind our parameters
 			$sqlh_delete->bindparam(":questionID",$questionID);
             
             //execute the query			
 			$sqlh_delete->execute();
-			
-        
-            //sql string
-     //       $sql_delete2 = "DELETE FROM tbl_poll_a WHERE aQuestion_Id = :questionID";
-            
-            //prepare the string
-	//		$sqlh_delete2 =  $pdo->prepare($sql_delete2);
-            
-            //bind our parameters
-	//		$sqlh_delete2->bindparam(":questionID",$questionID);
-            
-            //execute the query			
-	//		$sqlh_delete2->execute();
         }
         
         // Check if Edit button was pressed
@@ -67,10 +72,21 @@ $result_edit = $pdo->query($sql_selectEdit);
 <!-- CSS Stylesheet -->	
 <link rel="stylesheet" href="styles.css">
 
-<title>Display Data</title>
+<title>Questionnaire</title>
+
 
 </head>
 <body>
+<div id="wrapper">
+<header>
+	<h1>Questions from database</h1>
+</header>
+
+<?php
+  include 'menu.php';
+?>
+
+<main>
     <table border="2">
     <thead>
             <tr>
@@ -89,8 +105,8 @@ $result_edit = $pdo->query($sql_selectEdit);
         {
         echo(
             '<tr>'.
-             //    '<td>'.$row['qQuestionNumber'].". ".$row['qQuestion'].'</td>'.
-				 '<td>'.$row['qQuestion'].'</td>'.
+                 '<td>'.$row['qQuestionNumber'].". ".$row['qQuestion'].'</td>'.
+			 //	 '<td>'.$row['qQuestion'].'</td>'.
                  '<td>'.$row['qResponse1'].'</td>'.
                  '<td>'.$row['qResponse2'].'</td>'.
                  '<td>'.$row['qResponse3'].'</td>'.
@@ -115,8 +131,8 @@ $result_edit = $pdo->query($sql_selectEdit);
     ?>
     </tbody>
     </table>
-<?php
-  include 'menu.php';
-?>
+
+</main>
+</div>
 </body>
 </html>

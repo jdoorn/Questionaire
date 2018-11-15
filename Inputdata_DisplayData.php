@@ -81,10 +81,18 @@ catch(PDOException $e)
 <head>
 <!-- CSS Stylesheet -->	
 <link rel="stylesheet" href="styles.css">
-
-    <title>Confirmation</title>
+<title>Questionnaire</title>
 </head>
 <body>
+<div id="wrapper">
+<header>
+	<h1>Questionnaire</h1>
+	
+</header>
+<?php
+	include 'menu.php';
+ ?>
+<main>
       <h2>Information entered successfully</h2>
       <?php
         echo("Question: $qQuestionNumber $qQuestion<br>");
@@ -92,11 +100,9 @@ catch(PDOException $e)
         echo("Response 2: $qResponse2<br>");
         echo("Response 3: $qResponse3<br>");
         echo("Response 4: $qResponse4<br>");
-        include 'menu.php';
                                           
       ?>
+</main>
+</div>
 </body>
 </html>
-<?php
-
- ?>

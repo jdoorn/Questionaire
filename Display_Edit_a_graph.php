@@ -61,14 +61,23 @@ $result_edit1_1 = $pdo->query($sql_selectEdit1_1);
 <!-- CSS Stylesheet -->	
 <link rel="stylesheet" href="styles.css">
 
-<title>Display Data</title>
+<title>Questionnaire</title>
 
 </head>
 <body>
+<div id="wrapper">
+<header>
+	<h1>Questionnaire</h1>
+</header>
 
+<?php
+  include 'menu.php';
+?>
 
-	<h1>Response Percent by Question</h1>
-    <table border="none" width="100%">
+<main>
+	<h2>Response Percent by Question</h2>
+	
+    <table border="2">
     <thead>
             <tr>
                  <th width="34%">Question</th>
@@ -106,8 +115,7 @@ $result_edit1_1 = $pdo->query($sql_selectEdit1_1);
     </table>
 
 
-<?php
-  include 'menu.php';
-?>
+</main>
+</div>
 </body>
 </html>

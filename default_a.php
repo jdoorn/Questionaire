@@ -18,24 +18,12 @@ $result = $pdo->query($sql_question);
 
 <html>
 <head>
+<!-- CSS Stylesheet -->	
+<link rel="stylesheet" href="styles.css">
 
-<title>Poll</title>
+<title>Questionnaire</title>
 <style>
 	 
-/* body element - sets background to tan, text to black */
-	body {
-	background-color : #FFFFFF;
-	color : #666666;
-	font-family : Verdana, Arial, sans-serif;
-	font-size: 100%;
-	background-image: url(images/sand.jpg);
-	background-size: repeat;
-	color: rgb(64,48,40);
-}
-header, nav, main, footer
-{
-	display: block;
-}
 	th, option {
 		text-align: left;
 		padding: 3px;
@@ -56,25 +44,21 @@ header, nav, main, footer
 		padding: 12px;
 		font-weight: bold;
 	}
-	h1 {
-		background-color: rgb(178, 27, 0);
-		color: white;
-		text-align: center;
-		padding: 8px;
-	}
-/* nav element  */
-	nav {
-	font-weight: bold;
-	padding: 10px 5px 0px 10px;
-	text-decoration: none;
-	float: left;
-}
+
 </head>
 </style>  
 <body>
+<div id="wrapper">
 <header>
 	<h1>Emerging Web Technology Final Project</h1>
 </header>
+
+<?php
+  include 'menu.php';
+?>
+
+<main>
+
 <form method="POST" action="Inputdata_DisplayData_a.php">  
 <?php
 $_SESSION['cntr'] = 0;
@@ -129,8 +113,7 @@ echo('
 	</tr>
 	<br>
 </form> 	
-<?php
-    include 'menu.php';
-?>
+</main>
+</div>
 </body>
 </html>
