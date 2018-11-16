@@ -98,6 +98,7 @@ $result_edit1_1 = $pdo->query($sql_selectEdit1_1);
     'var myConfig'.$row['aQuestionNumber'].' = {
       "graphset": [{
         "type": "bar",
+        "plot": {"background-color": "#7A88A6"},
 
         "title": {
           "text": "'.$row['qQuestion'].'"'.
