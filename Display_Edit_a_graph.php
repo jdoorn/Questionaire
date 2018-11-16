@@ -58,6 +58,13 @@ $result_edit1_1 = $pdo->query($sql_selectEdit1_1);
 ?>
 <html>
 <head>
+
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+  <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+</script>
+
+
 <!-- CSS Stylesheet -->	
 <link rel="stylesheet" href="styles.css">
 
@@ -67,55 +74,55 @@ $result_edit1_1 = $pdo->query($sql_selectEdit1_1);
 <body>
 <div id="wrapper">
 <header>
-	<h1>Questionnaire</h1>
+<h1>Questionnaire</h1>
 </header>
 
 <?php
   include 'menu.php';
 ?>
 
-<main>
-	<h2>Response Percent by Question</h2>
-	
-    <table border="2">
-    <thead>
-            <tr>
-                 <th width="34%">Question</th>
-                 <th width="14%">Response1</th>
-				 <th width="3%">%</th>
-                 <th width="14%">Response2</th>
-				 <th width="3%">%</th>
-                 <th width="14%">Response3</th>
-				 <th width="3%">%</th>
-                 <th width="14%">Response4</th>
-				 <th width="3%">%</th>
-            </tr>
-    </thead>
-    <tbody>
-    <?php
+ <main> 
+<h2>Response Percent by Question</h2>	
+<?php
         // write rows and add buttons
         while($row = $result_edit1_1->fetch())
         {
         echo(
-            '<tr>'.
-                 '<td>'.$row['aQuestionNumber'].'. '.$row['qQuestion'].'</td>'.
-                 '<td>'.$row['qResponse1'].'</td>'.
-                 '<td style="text-align:center">'.$row['R_1_Pct'].'</td>'.
-                 '<td>'.$row['qResponse2'].'</td>'.
-                 '<td style="text-align:center">'.$row['R_2_Pct'].'</td>'.
-                 '<td>'.$row['qResponse3'].'</td>'.
-                 '<td style="text-align:center">'.$row['R_3_Pct'].'</td>'.
-                 '<td>'.$row['qResponse4'].'</td>'.
-                 '<td style="text-align:center">'.$row['R_4_Pct'].'</td>'.
-            '</tr>'
+
+          '<div id="myChart'.$row['aQuestionNumber'].'"></div>
+      
+  <script>
+    var myData = ['.$row['R_1_Pct'].','.$row['R_2_Pct'].','.$row['R_3_Pct'].','.$row['R_4_Pct'].'];'.
+
+ //   'var myConfig = {
+    'var myConfig'.$row['aQuestionNumber'].' = {
+      "graphset": [{
+        "type": "bar",
+
+        "title": {
+          "text": "'.$row['qQuestion'].'"'.
+        '},
+        "scale-x": {
+          "labels": ["'.$row['qResponse1'].'","'.$row['qResponse2'].'","'.$row['qResponse3'].'","'.$row['qResponse4'].'"]
+        },
+        "series": [{
+          "values": myData
+        }]
+      }]
+    };
+
+    zingchart.render({
+      id: "'.'myChart'.$row['aQuestionNumber'].'",
+      data: myConfig'.$row['aQuestionNumber'].'
+    }); 
+    
+  </script> 
+  '  
             );
         }
     ?>
-    </tbody>
-    </table>
 
+</main> 
 
-</main>
-</div>
 </body>
 </html>
