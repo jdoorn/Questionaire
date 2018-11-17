@@ -122,11 +122,6 @@ $result_edit1_1 = $pdo->query($sql_selectEdit1_1);
 
         },
 
-        "source": {
-          "text": "gs.statcounter.com",
-          "fontColor": "#8e99a9",
-          "fontFamily": "Open Sans"
-        },
 
         "title": {
           "fontColor": "#8e99a9",
